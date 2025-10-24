@@ -2,6 +2,8 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+Backend Repository: https://github.com/MrJuna1d/Inception-Backend
+
 First, run the development server:
 
 ```bash
