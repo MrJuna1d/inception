@@ -1,0 +1,171 @@
+{
+  "address": "9pD9b1CgRYsjswxTznrMrU7Cswz2JnWZgPHAmBfHQUTM",
+  "metadata": {
+    "name": "anchor_backend",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "initialize",
+      "discriminator": [
+        175,
+        175,
+        109,
+        31,
+        13,
+        152,
+        155,
+        237
+      ],
+      "accounts": [],
+      "args": []
+    },
+    {
+      "name": "store_game_metadata",
+      "discriminator": [
+        97,
+        44,
+        84,
+        113,
+        83,
+        154,
+        151,
+        169
+      ],
+      "accounts": [
+        {
+          "name": "metadata_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  97,
+                  109,
+                  101,
+                  95,
+                  109,
+                  101,
+                  116,
+                  97,
+                  100,
+                  97,
+                  116,
+                  97
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "authority"
+              }
+            ]
+          }
+        },
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "upload_date",
+          "type": "string"
+        },
+        {
+          "name": "file_count",
+          "type": "u32"
+        },
+        {
+          "name": "total_size",
+          "type": "u64"
+        },
+        {
+          "name": "engine",
+          "type": "string"
+        },
+        {
+          "name": "ipfs_cid",
+          "type": "string"
+        },
+        {
+          "name": "playable_url",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "GameMetadataAccount",
+      "discriminator": [
+        42,
+        206,
+        29,
+        39,
+        25,
+        213,
+        221,
+        153
+      ]
+    }
+  ],
+  "types": [
+    {
+      "name": "GameMetadataAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "upload_date",
+            "type": "string"
+          },
+          {
+            "name": "file_count",
+            "type": "u32"
+          },
+          {
+            "name": "total_size",
+            "type": "u64"
+          },
+          {
+            "name": "engine",
+            "type": "string"
+          },
+          {
+            "name": "ipfs_cid",
+            "type": "string"
+          },
+          {
+            "name": "playable_url",
+            "type": "string"
+          },
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    }
+  ]
+}
