@@ -1,10 +1,11 @@
 'use client';
 
-import type { Metadata } from "next";
+
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import {PrivyProvider} from '@privy-io/react-auth';
 import {toSolanaWalletConnectors} from "@privy-io/react-auth/solana";
+import { SolanaProvider } from "./components/solana-provider";
 //import { PrivyWagmiConnector } from '@privy-io/wagmi-connector';
 
 const geistSans = Geist({
@@ -29,20 +30,20 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <PrivyProvider
-          appId={process.env.NEXT_PUBLIC_PRIVY_APP_ID || "cmgshtwyl00ywl20bw9unnaf7"}
+          appId={process.env.NEXT_PUBLIC_PRIVY_APP_ID || ""}
           clientId="client-WY6RdAbAda3ZBpac51H58nCwF5EvhRRe38npaBWU79TE9"
           config={{
             appearance: { walletChainType: 'solana-only', walletList: ['metamask', 'phantom'], },
             externalWallets: {
               solana: { connectors: toSolanaWalletConnectors({
                   shouldAutoConnect: false, // 👈 avoid silent auto-connection attempts
-                  includeInjectedWallets: true
                 })}
             },
           }}
         >
-          {children}
-
+          <SolanaProvider>
+            {children}
+          </SolanaProvider>
         </PrivyProvider>
       </body>
     </html>
